@@ -65,46 +65,51 @@ StABB = {
 }
 with open("employee_data1.csv","r")as csvfile:
     csvreader = csv.reader(csvfile)
-    
-   #csvwriter = csv.writer(new)
-    for line in csvreader:
-        #print(line[1])
-        empID = line[0]
-        Namelist = line[1].split()
-        DOB = line[2]
-        SSN = line[3]
-        st = str(line[4])
-        abbState = ""
-        for key, value in StABB.items():
-            if st == key:
-                abbState = value
-                
-        #print (abbState)
-        
-        # Method1 for reading a list that is a result of the split menthod:
-        # In this menthod, since we are extracting the last element in the list
-        #for last name and the Last 4 digits of the SNN...we can use -1 as the arg.
-        
-        FirstName = Namelist[0]
-        LastName = Namelist[-1]
-        SSNSplit = line[3].split('-')
-        FormattedSSN = "***-**-" + SSNSplit[-1]
-        
-        # Method 2 reading a list that is a result of the split menthod :
-        
-        DateSplit = line[2].split("-")
-        Year = ""
-        Date= ""
-        Month = ""
-        
-        for i in DateSplit:
-            if DateSplit.index(i)==0:
-                #Year
-                Year = i
-            elif DateSplit.index(i)==1:
-                Month  = i
-            else:
-                Date = i
-                
-        FormattedDOB = Month +"/"+ Date + "/" +Year
-        print(empID+","+FirstName+ "," + LastName+ "," + FormattedDOB+"," + FormattedSSN+"," +abbState)
+    next(csvreader)
+    with open("employee_data2.csv","w",newline ="") as newfile:
+       csvwriter = csv.writer(newfile,delimiter = ",")
+       
+       csvwriter.writerow(FinalHeaders)     
+       #csvwriter = csv.writer(new)
+       for line in csvreader:
+            #print(line[1])
+            empID = line[0]
+            Namelist = line[1].split()
+            DOB = line[2]
+            SSN = line[3]
+            st = str(line[4])
+            abbState = ""
+            for key, value in StABB.items():
+                if st == key:
+                    abbState = value
+                    
+            #print (abbState)
+            
+            # Method1 for reading a list that is a result of the split menthod:
+            # In this menthod, since we are extracting the last element in the list
+            #for last name and the Last 4 digits of the SNN...we can use -1 as the arg.
+            
+            FirstName = Namelist[0]
+            LastName = Namelist[-1]
+            SSNSplit = line[3].split('-')
+            FormattedSSN = "***-**-" + SSNSplit[-1]
+            
+            # Method 2 reading a list that is a result of the split menthod :
+            
+            DateSplit = line[2].split("-")
+            Year = ""
+            Date= ""
+            Month = ""
+            
+            for i in DateSplit:
+                if DateSplit.index(i)==0:
+                    #Year
+                    Year = i
+                elif DateSplit.index(i)==1:
+                    Month  = i
+                else:
+                    Date = i
+                    
+            FormattedDOB = Month +"/"+ Date + "/" +Year
+            #print(empID+","+FirstName+ "," + LastName+ "," + FormattedDOB+"," + FormattedSSN+"," +abbState)
+            csvwriter.writerow([empID,FirstName,LastName,FormattedDOB,FormattedSSN,abbState])
