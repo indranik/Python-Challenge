@@ -79,7 +79,7 @@ with open("employee_data1.csv")as csvfile:
             if st == key:
                 abbState = value
                 
-        print (abbState)
+        #print (abbState)
         
         # Method1 for reading a list that is a result of the split menthod:
         # In this menthod, since we are extracting the last element in the list
@@ -93,13 +93,18 @@ with open("employee_data1.csv")as csvfile:
         # Method 2 reading a list that is a result of the split menthod :
         
         DateSplit = line[2].split("-")
-        Year = DateSplit[0]
-        print(DateSplit)
-        print(empID+ " " +  FirstName + " "+LastName+ " " + DOB + " "  + FormattedSSN)
+        Year = ""
+        Date= ""
+        Month = ""
         
-         
-        
-        
-     
-        
-        
+        for i in DateSplit:
+            if DateSplit.index(i)==0:
+                #Year
+                Year = i
+            elif DateSplit.index(i)==1:
+                Month  = i
+            else:
+                Date = i
+                
+        FormattedDOB = Month +"/"+ Date + "/" +Year
+        print(empID+","+FirstName+ "," + LastName+ "," + FormattedDOB+" ," + FormattedSSN+" ," +      abbState)
