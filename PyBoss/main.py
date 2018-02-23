@@ -63,7 +63,7 @@ StABB = {
     'Wisconsin': 'WI',
     'Wyoming': 'WY',
 }
-with open("employee_data1.csv")as csvfile:
+with open("employee_data1.csv","r")as csvfile:
     csvreader = csv.reader(csvfile)
     
    #csvwriter = csv.writer(new)
@@ -107,4 +107,4 @@ with open("employee_data1.csv")as csvfile:
                 Date = i
                 
         FormattedDOB = Month +"/"+ Date + "/" +Year
-        print(empID+","+FirstName+ "," + LastName+ "," + FormattedDOB+" ," + FormattedSSN+" ," +      abbState)
+        print(empID+","+FirstName+ "," + LastName+ "," + FormattedDOB+"," + FormattedSSN+"," +abbState)
