@@ -13,7 +13,7 @@ import csv
 listResults = []
 numVotes = 0
 
-with open("election_data_2.csv","r")as csvfile:
+with open("election_data_1.csv","r")as csvfile:
     csvreader = csv.reader(csvfile)
     next(csvreader)
     for line in csvreader:

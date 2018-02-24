@@ -63,10 +63,10 @@ StABB = {
     'Wisconsin': 'WI',
     'Wyoming': 'WY',
 }
-with open("employee_data1.csv","r")as csvfile:
+with open("employee_data2.csv","r")as csvfile:
     csvreader = csv.reader(csvfile)
     next(csvreader)
-    with open("employee_data2.csv","w",newline ="") as newfile:
+    with open("employee_data.csv","w",newline ="") as newfile:
        csvwriter = csv.writer(newfile,delimiter = ",")
        
        csvwriter.writerow(FinalHeaders)     
