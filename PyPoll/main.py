@@ -40,5 +40,38 @@ with open("election_data_2.csv","r")as csvfile:
                      listResults.append(candidates)
                      
 print (numVotes)                
-print(listResults)
-           
+
+
+#now that you have the votes expand the candiate Dictionaries to calculate 
+# percentage polled.
+maxVotes = 0
+Winner = ""
+
+for CDict in listResults:
+   
+    CDict["votePer"] = '{0:.1f}%'.format((CDict["Votes"]/numVotes)*100)
+    if(maxVotes<CDict["Votes"]):
+        maxVotes =  CDict["Votes"]
+        Winner = CDict["name"]
+        
+
+
+#writing to the terminal
+
+print ("Election Results") 
+print()
+print("----------------------------")
+print()
+print("Total Votes: " + str(numVotes))
+print() 
+print("----------------------------")
+print()
+
+for CDict in listResults:
+    print(CDict["name"] + " : " + str(CDict["votePer"])+ "  (" +str(CDict["Votes"]) +")")
+    print()
+print("----------------------------")
+print()
+print("Winner : " + Winner)     
+print() 
+print("----------------------------")  
