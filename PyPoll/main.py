@@ -74,4 +74,27 @@ print("----------------------------")
 print()
 print("Winner : " + Winner)     
 print() 
-print("----------------------------")  
+print("----------------------------") 
+
+#Writing to a textfile
+
+with open("electionresults.txt","w") as textFile:
+    
+    textFile.write("Election Results") 
+    textFile.write("\n")
+    textFile.write("----------------------------")
+    textFile.write("\n")
+    textFile.write("Total Votes: " + str(numVotes))
+    textFile.write("\n") 
+    textFile.write("----------------------------")
+    textFile.write("\n")
+    
+    for CDict in listResults:
+        textFile.write(CDict["name"] + " : " + str(CDict["votePer"])+ "  (" +str(CDict["Votes"]) +")")
+        textFile.write("\n")
+    textFile.write("----------------------------")
+    textFile.write("\n")
+    textFile.write("Winner : " + Winner)     
+    textFile.write("\n") 
+    textFile.write("----------------------------") 
+textFile.close()
