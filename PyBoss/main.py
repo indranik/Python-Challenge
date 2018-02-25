@@ -76,6 +76,7 @@ with open("employee_data2.csv","r")as csvfile:
             empID = line[0]
             Namelist = line[1].split()
             DOB = line[2]
+            
             SSN = line[3]
             st = str(line[4])
             abbState = ""
